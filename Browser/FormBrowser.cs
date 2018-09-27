@@ -236,6 +236,7 @@ namespace Browser
 			CefSharpSettings.SubprocessExitIfParentProcessClosed = true;
 			Cef.Initialize(settings, false, null);
 
+			SetCookies();
 
 			var requestHandler = new RequestHandler(pixiSettingEnabled: Configuration.PreserveDrawingBuffer);
 			requestHandler.RenderProcessTerminated += (mes) => AddLog(3, mes);
@@ -253,6 +254,19 @@ namespace Browser
 			SizeAdjuster.Controls.Add(Browser);
 		}
 
+		void SetCookies()
+		{
+			Cookie c = new Cookie();
+			c.Name = "ckcy";
+			c.Value = "1";
+			c.Domain = ".dmm.com";
+			c.Path = @"/netgame/";
+			c.Expires = DateTime.Now.AddMonths(6);
+			c.HttpOnly = false;
+			c.Secure = false;
+			var manager = Cef.GetGlobalCookieManager();
+			manager.SetCookie(@"http://www.dmm.com/netgame/social/-/gadgets/=/app_id=854854/", c);
+		}
 
 		void Exit()
 		{
