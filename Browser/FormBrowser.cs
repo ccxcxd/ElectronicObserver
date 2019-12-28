@@ -259,7 +259,7 @@ namespace Browser
 			Cookie c = new Cookie();
 			c.Name = "ckcy";
 			c.Value = "1";
-			c.Domain = ".dmm.com";
+			c.Domain = "www.dmm.com";
 			c.Path = @"/netgame/";
 			c.Expires = DateTime.Now.AddMonths(6);
 			c.HttpOnly = false;
@@ -377,6 +377,12 @@ namespace Browser
 
 			if (e.IsLoading)
 				return;
+
+			if (Browser.Address.Contains("redirect"))
+			{
+				SetCookies();
+				Browser.Refresh();
+			}
 
 			BeginInvoke((Action)(() =>
 			{
