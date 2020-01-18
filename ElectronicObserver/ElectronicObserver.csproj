@@ -200,6 +200,7 @@
     <Compile Include="Data\UseItemMaster.cs" />
     <Compile Include="Notifier\NotifierAnchorageRepair.cs" />
     <Compile Include="Notifier\NotifierBase.cs" />
+    <Compile Include="Notifier\NotifierBaseAirCorps.cs" />
     <Compile Include="Notifier\NotifierCondition.cs" />
     <Compile Include="Notifier\NotifierConstruction.cs" />
     <Compile Include="Notifier\NotifierDialogData.cs" />
@@ -848,6 +849,7 @@
     <EmbeddedResource Include="Window\Integrate\FormIntegrated.resx">
       <DependentUpon>FormIntegrated.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".editorconfig" />
     <None Include="Assets.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

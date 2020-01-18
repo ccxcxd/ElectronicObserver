@@ -1031,6 +1031,13 @@ namespace ElectronicObserver.Data
                 case DayAttackKind.CutinMainMain:
                     basepower *= 1.5;
                     break;
+				case DayAttackKind.ZuiunMultiAngle:
+					basepower *= 1.35;
+					break;
+				case DayAttackKind.SeaAirMultiAngle:
+					basepower *= 1.3;
+					break;
+				
             }
 
             return (int)(basepower * GetAmmoDamageRate());
@@ -1368,6 +1375,7 @@ namespace ElectronicObserver.Data
                     case 689:       // Johnston改
                     case 596:       // Fletcher
                     case 692:       // Fletcher改
+                    case 893:       // Janus改
                         return true;
                 }
 
@@ -1383,10 +1391,10 @@ namespace ElectronicObserver.Data
 
                     case 554:   // 日向改二
                         // カ号観測機, オ号観測機改, オ号観測機改二
-                        if (eqs.Any(eq => eq.EquipmentID == 69 || eq.EquipmentID == 324 || eq.EquipmentID == 325))
+                        if (eqs.Count(eq => eq.EquipmentID == 69 || eq.EquipmentID == 324 || eq.EquipmentID == 325) >= 2)
                             return true;
                         // S-51J, S-51J改
-                        if (eqs.Count(eq => eq.EquipmentID == 326) >= 2 || eqs.Count(eq => eq.EquipmentID == 327) >= 2)
+                        if (eqs.Any(eq => eq.EquipmentID == 326 || eq.EquipmentID == 327))
                             return true;
 
                         return false;
