@@ -85,6 +85,8 @@
     <Compile Include="CefOp\CustomRequestHandler.cs" />
     <Compile Include="CefOp\CustomResourceRequestHandler.cs" />
     <Compile Include="CefOp\DragHandler.cs" />
+    <Compile Include="CefOp\GadgetReplaceUrlFilter.cs" />
+    <Compile Include="CefOp\GadgetUrlHandler.cs" />
     <Compile Include="CefOp\KeyboardHandler.cs" />
     <Compile Include="CefOp\MenuHandler.cs" />
     <Compile Include="CefOp\ResponseFilterPixiSetting.cs" />

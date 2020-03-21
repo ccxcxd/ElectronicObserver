@@ -24,6 +24,8 @@ namespace Browser.CefOp
 
 		protected override IResourceRequestHandler GetResourceRequestHandler(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, IRequest request, bool isNavigation, bool isDownload, string requestInitiator, ref bool disableDefaultHandling)
 		{
+			if (request.Url.Contains("gadget_html5"))
+				return new GadgetUrlHandler();
 			return new CustomResourceRequestHandler(pixiSettingEnabled);
 		}
 
