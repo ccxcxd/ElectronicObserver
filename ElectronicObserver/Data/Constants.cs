@@ -383,6 +383,14 @@ namespace ElectronicObserver.Data
 				case 89: return "Gotland級";
 				case 90: return "日進型";
 				case 91: return "Fletcher級";
+				case 92: return "L.d.S.D.d.Abruzzi級";
+				case 93: return "Colorado級";
+				case 94: return "御蔵型";
+				case 95: return "Northampton級";
+				case 96: return "Perth級";
+				case 97: return "陸軍特種船(R1)";
+				case 98: return "De Ruyter級";
+				case 99: return "Atlanta級";
 				default: return "不明";
 			}
 		}
@@ -774,6 +782,8 @@ namespace ElectronicObserver.Data
 					return "長門、いい？ いくわよ！ 主砲一斉射ッ！";
 				case DayAttackKind.SpecialColorado:
 					return "Colorado Touch";
+				case DayAttackKind.SpecialKongo:
+					return "僚艦夜戦突撃";
 				case DayAttackKind.ZuiunMultiAngle:
 					return "瑞雲立体攻撃";
 				case DayAttackKind.SeaAirMultiAngle:
@@ -837,6 +847,8 @@ namespace ElectronicObserver.Data
 					return "長門、いい？ いくわよ！ 主砲一斉射ッ！";
 				case NightAttackKind.SpecialColorado:
 					return "Colorado Touch";
+				case NightAttackKind.SpecialKongo:
+					return "僚艦夜戦突撃";
 				case NightAttackKind.Shelling:
 					return "砲撃";
 				case NightAttackKind.AirAttack:
@@ -1093,6 +1105,33 @@ namespace ElectronicObserver.Data
 					return "単";
 				case 5:     //その他(輸送5/空母3)
 					return "他";
+
+					// 以下、厳密には LabelType だが面倒なので
+				case 101:
+					return "1";
+				case 102:
+					return "2";
+				case 103:
+					return "3";
+				case 104:
+					return "4";
+				case 105:
+					return "5";
+				case 106:
+					return "6";
+				case 107:
+					return "7";
+				case 108:
+					return "8";
+				case 109:
+					return "9";
+				case 110:
+					return "10";
+				case 111:
+					return "11";
+				case 112:
+					return "12";
+
 				default:
 					return "?";
 			}
@@ -1110,6 +1149,8 @@ namespace ElectronicObserver.Data
 				case 1:
 					return "編成";
 				case 2:
+				case 8:
+				case 9:
 					return "出撃";
 				case 3:
 					return "演習";
@@ -1121,9 +1162,7 @@ namespace ElectronicObserver.Data
 					return "工廠";
 				case 7:
 					return "改装";
-				case 8:
-					return "出撃";
-				case 9:
+				case 10:
 					return "他";
 				default:
 					return "不明";

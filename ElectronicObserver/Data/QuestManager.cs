@@ -1,5 +1,4 @@
-﻿using Codeplex.Data;
-using ElectronicObserver.Utility.Mathematics;
+﻿using ElectronicObserver.Utility.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -79,7 +78,14 @@ namespace ElectronicObserver.Data
 				progress.Progresses.RemoveAll(p => p.QuestType == 5);
 				Quests.RemoveAll(p => p.Type == 5);
 			}
-
+			for (int i = 1; i <= 12; i++)
+			{
+				if (DateTimeHelper.IsCrossedYear(progress.LastUpdateTime, i, 1, 5, 0, 0))
+				{
+					progress.Progresses.RemoveAll(p => p.QuestType == 100 + i);
+					Quests.RemoveAll(p => p.LabelType == 100 + i);
+				}
+			}
 
 			Count = (int)RawData.api_count;
 
