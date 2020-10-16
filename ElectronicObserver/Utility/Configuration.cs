@@ -1464,6 +1464,17 @@ namespace ElectronicObserver.Utility
 			[DataMember]
 			public ConfigWhitecap Whitecap { get; private set; }
 
+			public class ConfigMyLocal : ConfigPartBase
+			{
+				public String HpFilePath { get; set; }
+
+				public ConfigMyLocal()
+				{
+					HpFilePath = null;
+				}
+			}
+			[DataMember]
+			public ConfigMyLocal MyLocal { get; private set; }
 
 
 			[DataMember]
@@ -1517,6 +1528,8 @@ namespace ElectronicObserver.Utility
 				BGMPlayer = new ConfigBGMPlayer();
 				FleetImageGenerator = new ConfigFleetImageGenerator();
 				Whitecap = new ConfigWhitecap();
+
+				MyLocal = new ConfigMyLocal();
 
 				VersionUpdateTime = DateTimeHelper.TimeToCSVString(SoftwareInformation.UpdateTime);
 

@@ -108,6 +108,7 @@ namespace ElectronicObserver.Window
 
 				case "api_get_member/mapinfo":
 					TextInformation.Text = GetMapGauge(data);
+					WriteToHpFile();
 					break;
 
 				case "api_req_mission/result":
@@ -384,6 +385,24 @@ namespace ElectronicObserver.Window
 
 
 			return sb.ToString();
+		}
+
+		private static void WriteToHpFile()
+		{
+			String hpFilePath = Utility.Configuration.Config.MyLocal.HpFilePath;
+			if (hpFilePath == null)
+				return;
+
+			try
+			{
+				var map = KCDatabase.Instance.MapInfo[KCDatabase.Instance.MapInfo.Keys.Max()];
+				var text = string.Format("{0}: {1}/{2}", map.GaugeType == 2 ? "HP" : "TP", map.MapHPCurrent, map.MapHPMax);
+				System.IO.File.WriteAllText(hpFilePath, text);
+			}
+			catch (Exception ex)
+			{
+				Utility.ErrorReporter.SendErrorReport(ex, "WriteToHpFile Failed.");
+			}
 		}
 
 
