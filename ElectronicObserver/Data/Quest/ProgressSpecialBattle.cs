@@ -145,6 +145,12 @@ namespace ElectronicObserver.Data.Quest
 						memberstype.Count(t => t == ShipTypes.Destroyer || t == ShipTypes.Escort) >= 3;
 					break;
 
+				// |854|季|戦果拡張任務！「Z作戦」前段作戦|2-4・6-1・6-3ボスA勝利各1/6-4ボスS勝利1|要第一艦隊
+				case 854:
+					isAccepted =
+						fleet.FleetID == 1;
+					break;
+
 				// |861|季|強行輸送艦隊、抜錨！|1-6終点到達2|要(航空戦艦or補給艦)2
 				case 861:
 					isAccepted =
@@ -202,7 +208,17 @@ namespace ElectronicObserver.Data.Quest
 						}) >= 4;
 					break;
 
-				case 872:   // |872|季|戦果拡張任務！「Z作戦」後段作戦|5-5・6-2・6-5・7-2(第二)ボスS勝利各1|要第一艦隊？
+				case 872:   // |872|季|戦果拡張任務！「Z作戦」後段作戦|5-5・6-2・6-5・7-2(第二)ボスS勝利各1|要第一艦隊
+					isAccepted = fleet.FleetID == 1;
+					if (bm.Compass.MapAreaID == 7 && bm.Compass.MapInfoID == 2)
+					{
+						if (GaugeIndex == 1)
+							isAccepted &= bm.Compass.Destination == 7;
+						else if (GaugeIndex == 2)
+							isAccepted &= bm.Compass.Destination == 15;
+					}
+					break;
+
 				case 893:   // |893|季|泊地周辺海域の安全確保を徹底せよ！|1-5・7-1・7-2(第一＆第二)ボスS勝利各3|3エリア達成時点で80%
 					if (bm.Compass.MapAreaID == 7 && bm.Compass.MapInfoID == 2)
 					{
@@ -248,6 +264,11 @@ namespace ElectronicObserver.Data.Quest
 				case 912:   // |912|年(3月)|工作艦「明石」護衛任務|1-3・2-1・2-2・2-3ボスA勝利各1/1-6終点到達1|要明石旗艦, 駆逐艦3
 					isAccepted = members.FirstOrDefault()?.MasterShip?.NameReading == "あかし" && 
 						memberstype.Count(t => t == ShipTypes.Destroyer) >= 3;
+					break;
+
+				case 914:   // |914|３|重巡戦隊、西へ！|4-1・4-2・4-3・4-4ボスA勝利各1|要重巡3/駆逐1
+					isAccepted = memberstype.Count(t => t == ShipTypes.HeavyCruiser) >= 3 &&
+						memberstype.Count(t => t == ShipTypes.Destroyer) >= 1;
 					break;
 			}
 
