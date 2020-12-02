@@ -395,8 +395,9 @@ namespace ElectronicObserver.Window
 
 			try
 			{
-				var map = KCDatabase.Instance.MapInfo[KCDatabase.Instance.MapInfo.Keys.Max()];
-				var text = string.Format("{0}: {1}/{2}", map.GaugeType == 2 ? "HP" : "TP", map.MapHPCurrent, map.MapHPMax);
+				var latestOngoingMapId = KCDatabase.Instance.MapInfo.Values.Max(map => map.MapHPMax > 0 ? map.ID : -1);
+				var latestOngoingMap = KCDatabase.Instance.MapInfo[latestOngoingMapId];
+				var text = string.Format("{0}: {1}/{2}", latestOngoingMap.GaugeType == 2 ? "HP" : "TP", latestOngoingMap.MapHPCurrent, latestOngoingMap.MapHPMax);
 				System.IO.File.WriteAllText(hpFilePath, text);
 			}
 			catch (Exception ex)
