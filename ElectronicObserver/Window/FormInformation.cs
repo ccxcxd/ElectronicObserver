@@ -396,6 +396,9 @@ namespace ElectronicObserver.Window
 			try
 			{
 				var latestOngoingMapId = KCDatabase.Instance.MapInfo.Values.Max(map => map.MapHPMax > 0 ? map.ID : -1);
+				if (latestOngoingMapId == -1)
+					return;
+
 				var latestOngoingMap = KCDatabase.Instance.MapInfo[latestOngoingMapId];
 				var text = string.Format("{0}: {1}/{2}", latestOngoingMap.GaugeType == 2 ? "HP" : "TP", latestOngoingMap.MapHPCurrent, latestOngoingMap.MapHPMax);
 				System.IO.File.WriteAllText(hpFilePath, text);
