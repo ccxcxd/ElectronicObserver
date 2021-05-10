@@ -42,6 +42,7 @@ namespace ElectronicObserver.Utility.Data
 			{ EquipmentTypes.SeaplaneFighter,        new int[] { 0, 0, 2, 5, 9, 14, 14, 22, 22 } },
 			{ EquipmentTypes.LandBasedAttacker,      new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 } },
 			{ EquipmentTypes.Interceptor,            new int[] { 0, 0, 2, 5, 9, 14, 14, 22, 22 } },
+			{ EquipmentTypes.HeavyBomber,            new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 } },
 			{ EquipmentTypes.JetFighter,             new int[] { 0, 0, 2, 5, 9, 14, 14, 22, 22 } },
 			{ EquipmentTypes.JetBomber,              new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 } },
 			{ EquipmentTypes.JetTorpedo,             new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 } },
@@ -63,6 +64,7 @@ namespace ElectronicObserver.Utility.Data
 			{ EquipmentTypes.SeaplaneFighter,       0.2 },
 			{ EquipmentTypes.Interceptor,           0.2 },
 			{ EquipmentTypes.LandBasedAttacker,     0.5 },
+			{ EquipmentTypes.HeavyBomber,		    0.5 },
 		};
 
 
@@ -100,7 +102,7 @@ namespace ElectronicObserver.Utility.Data
 
 			double levelBonus = LevelBonus.ContainsKey(category) ? LevelBonus[category] : 0;    // 改修レベル補正
 
-			if (category == EquipmentTypes.LandBasedAttacker)
+			if (category == EquipmentTypes.LandBasedAttacker || category == EquipmentTypes.HeavyBomber)
 				levelBonus *= Math.Sqrt(level);
 			else
 				levelBonus *= level;
@@ -1046,7 +1048,7 @@ namespace ElectronicObserver.Utility.Data
 
 			}
 
-			if (attackerShipID == 545 || attackerShipID == 599)      // Saratoga Mk.II/赤城改二戊
+			if (attackerShipID == 545 || attackerShipID == 599 || attackerShipID == 610)      // Saratoga Mk.II/赤城改二戊/加賀改二戊
 				nightPersonnelCount++;
 
 
